@@ -1,0 +1,96 @@
+{% extends 'site_admin/layout.html' %}
+{% block 'page' %} Dashboard {% endblock %}
+{% block 'subpage' %} Dashboard {% endblock %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+<style>
+	p {
+		padding-left:15px;
+		font-family:cursive
+	}
+	
+	label {
+		color: orange
+	}
+</style>
+<section class="section">
+  <div class="row">
+
+	<div class="col-lg-12">
+
+	  <div class="card">
+		<div class="card-body">
+		  <h5 class="card-title">BANNER DETAILS	<a style="float:right" href="{% url 'hero_edit' banner.pk %}" class="btn btn-outline-primary">Edit</a>
+		   <a style="float:right" href="{% url 'hero_delete' banner.pk %}" class="btn btn-outline-danger"> Delete</a></h5>
+
+		  <!-- Advanced Form Elements -->
+		  <form action="" method="POST" enctype="multipart/form-data">
+		  {% csrf_token %}
+			
+			<div class="row mb-3">
+			
+			  <div class="col-sm-6">
+				<div class="">
+				  <label for="floatingInput">Title</label>
+				  <p>{{banner.title}}
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="">
+				  <label for="floatingInput">Image</label>
+				  <p><img src="/media/{{banner.image}}" style="height:80px" /></p>
+				</div>
+			  </div>
+
+			  
+			  <div class="col-sm-12">
+				<div class="">
+				  <label for="floatingInput">Description</label>
+				  <p>{{banner.description}}</p>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="">
+				  <label for="floatingInput">URL</label>
+				  <p>{{banner.url|upper}}</p>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="">
+				  <label for="floatingInput">Link Text</label>
+				  <p>{{banner.button_text|title}}</p>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="">
+				  <label for="floatingInput">Order</label>
+				  <p>{{banner.order}}</p>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="">
+				  <label for="floatingInput">Status</label>
+				  <p>{{banner.status|upper}}</p>
+				</div>
+			  </div>			
+			  
+			  
+			</div>
+
+		
+
+		  </form><!-- End General Form Elements -->
+
+		</div>
+	  </div>
+
+	</div>
+  </div>
+</section>
+{%endblock %}

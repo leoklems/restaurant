@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% if site_info.name|title %} {{site_info.name|title}} - {% endif %} Restaurant and Cafe</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'home/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/aos/aos.css" rel="stylesheet' %}">
+  <link href="{% static 'home/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Restaurantly - v3.8.0
+  * Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+	<!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <section id="book-a-table" class="book-a-table">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Reservation</h2>
+          <p>Book a Table</p>
+        </div>
+
+        <form role="form" class="" data-aos="fade-up" data-aos-delay="100">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 form-group">
+              <input type="text" name="name" class="form-control" id="full_name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input type="date" name="date" class="form-control" id="date" placeholder="Date">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input type="time" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input type="number" class="form-control" name="people" id="guest" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+              <div class="validate"></div>
+            </div>
+			
+			<div class="col-lg-4 col-md-6 form-group mt-3">
+				<label>Preference</label>
+              {{ reservation_form.preference}}
+            </div>
+          </div>
+		  
+          <div class="form-group mt-3" style="width:80%;margin-left:10%;margin-top:20px;height:40px;;border-radius:5px;border:2px solid orange;background:grey;color:white;padding:10px">
+            <input type="checkbox" name="reservation_subscribe" id="reservation_subscribe" /> <span style="color:orange"><b>OPTIONAL:</b> </span>
+			<span>Sign up to get our latest offers and new deals</span>
+          </div>
+          <div class="mb-3">
+            <div class="loading">Loading</div>
+            <div style="color:red" id="reservation_error"></div>
+            <div class="text-success" id="reservation_success"></div>
+          </div>
+          <div class="text-center"><button href="#" class="btn btn-warning" id="reserve_button">Book a Table</button></div>
+        </form>
+
+      </div>
+    </section><!-- End Book A Table Section -->
+  </div><!-- End Property Search Section -->
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-phone d-flex align-items-center"><span>{{site_info.mobile_1|title}}</span></i>
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span> {{site_info.working_hour|upper}}</span></i>
+      </div>
+
+      <div class="languages d-none d-md-flex align-items-center">
+        <ul>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-cente">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+
+      <h1 class="logo me-auto me-lg-0">
+	  {% if site_info.logo %}
+		<a href="{% url 'home' %}" class="logo me-auto me-lg-0"><img src="/media/{{site_info.logo}}" style="width:120px;height:60px" alt="" class="img-fluid"></a>
+	  {% else %}
+	  <a href="{% url 'home' %}"> {{site_info.name|upper}} </a>
+	  {% endif %}
+	  </h1>
+     
+      
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto" href="{% url 'home' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'about' %}">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'menu' %}">Menu</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'special' %}">Specials</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'vip_cards' %}">VIP Cards</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'gallery' %}">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'about' %}#testimonials">Reviews</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'books' %}">Books</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'contact' %}">Contact-us</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'cart' %}"><i class="bi bi-cart d-flex align-items-center" style="font-size:20px"></i><span style="font-family:cursive;margin-left:5px" id="cart_item_count">{% if request.session.cart %} {{ request.session.cart|length }} {% else %} 0 {% endif %}</span></a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+
+  </nav><!-- End Header/Navbar -->
+      <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Book a table</a>
+	  
+
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <main>
+      {% block 'main' %} {% endblock %}
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>{{site_info.name|upper}}</h3>
+              <p>
+                {{site_info.address}}<br><br>
+                <strong>Phone:</strong> {{site_info.mobile_1|title}} {{site_info.mobile_2|title}}<br>
+                <strong>Email:</strong> {{site_info.email|lower}}<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="{{site_info.twitter_link}}" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="{{site_info.facebook_link}}" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="{{site_info.instagram_link}}" class="instagram"><i class="bx bxl-instagram"></i></a>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'about' %}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}#events">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'contact' %}">Contact us</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Restaurant</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'menu' %}">Menu</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'gallery' %}">Gallery</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'about' %}#testimonials">Reviews</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'vip_cards' %}">VIP Cards</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Get special offers and updates by subscribing to our newsletter</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>{{site_info.name|title}}</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/restaurantly-restaurant-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'home/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'home/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'home/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'home/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'home/vendor/php-email-form/validate.js' %}"></script>
+	
+  <!-- Template Main JS File -->
+  <script src="{% static 'home/js/main.js' %}"></script>
+  <script src="{% static 'admin_site/scripts/jquery.js' %}"></script>
+  <script>
+  $(document).ready(function(){
+		$('#reserve_button').click(function(){
+			$(this).attr('disabled', 'disabled')
+			full_name = $('#full_name').val()
+			email = $('#email').val()
+			mobile = $('#phone').val()
+			date = $('#date').val()
+			time = $('#time').val()
+			number_of_guest = $('#guest').val()
+			button = $(this)
+
+			$.ajax({
+				url: "{% url 'make_reservation' %}",
+				method: "POST",
+				data: {
+					'full_name': full_name,
+					'mobile': mobile,
+					'email': email,
+					'number_of_guest': number_of_guest,
+					'date': date,
+					'time': time,
+				},
+				success: function(data){
+					if (data[0] == 'E'){
+						$('#reservation_error').html(data)
+						$('#reservation_success').html('')
+						button.removeAttr('disabled')
+					}else{
+						$('#reservation_success').html(data)
+						$('#reservation_error').html('')
+					}
+				}
+			})
+		})
+		
+		
+		$('#menu_minus').click(function(){ 
+			row = $(this).attr('row')
+			count = parseInt($('#menu_count'+row).html())
+			if (count > 1){
+				count -= 1
+			}
+			$('#menu_count'+row).html(count)
+		})
+		
+		$('#menu_plus').click(function(){ 
+			row = $(this).attr('row')
+			count = parseInt($('#menu_count'+row).html()) + 1
+
+			$('#menu_count'+row).html(count)
+		})
+		
+		$('.add-cart').click(function(){
+			pk = $(this).attr('pk')
+			row = $(this).attr('row')
+			amount = parseInt($('#menu_count'+row).html())
+			items = $('.cart_item_count').html()
+			items_count = parseInt(items)
+			
+			$.ajax({
+				url: "{% url 'make_cart' %}",
+				method: "POST",
+				data: {
+					'id': pk,
+					'amount': amount
+				},
+				success: function(data){
+					if(data == 'added'){
+						$("#cart_status").html(' Remove')
+						items_count += 1
+
+					}else if(data == 'removed'){
+						$("#cart_status").html(' Add')
+						items_count -= 1
+					}
+					$('.cart_item_count').html(items_count)
+
+				}
+			})
+		})
+	})
+	</script>
+
+</body>
+
+</html>

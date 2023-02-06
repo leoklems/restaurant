@@ -1,0 +1,71 @@
+{% extends 'site_admin/layout.html' %}
+{% block 'page' %} Menu {% endblock %}
+{% block 'subpage' %} Create {% endblock %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="moda" id="largeModal" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Menu </h5>
+                </div>
+                <div class="modal-body">
+					<div class="row">
+						<div class="form-floating col-md-6" style="margin-bottom:15px">
+							{{ form.name }}
+							<label for="floatingName"> Item Name <span style="color:red"><b>*</b></span></label>
+						</div><br />
+
+						<div class="form-floating col-md-6" style="margin-bottom:15px">
+							{{ form.menu_type }}
+							<label for="floatingName"> Item Type <span style="color:red"><b>*</b></span></label>
+						</div><br />
+
+
+						<div class="form-floating col-md-6" style="margin-bottom:15px">
+							{{ form.category }}
+							<label for="floatingName">Item Category <span style="color:red"><b>*</b></span></label>
+						</div><br />
+
+						<div class="form-floating col-md-6" style="margin-bottom:15px">
+							{{ form.menu_class }}
+							<label for="floatingName">Item Class</label>
+						</div><br />
+
+						<div class="form-floating col-md-6" style="margin-bottom:15px">
+							{{ form.price }}
+							<label for="floatingName">Item Price <span style="color:red"><b>*</b></span></label>
+						</div><br />
+
+						<div class="form-floating col-md-6" style="margin-bottom:15px">
+							{{ form.image }}
+							<label for="floatingName col-md-6">Item Image</label>
+						</div><br />
+
+						<div class="form-floating col-md-6" style="margin-bottom:15px">
+							{{ form.description }}
+							<label for="floatingName">Item Description <span style="color:red"><b>*</b></span></label>
+						</div><br />
+
+						<div class="form-floating col-md-6" style="margin-bottom:15px">
+							{{ form.status }}
+							<label for="floatingName">Item Status</label>
+						</div><br />
+					</div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{%endblock %}
+

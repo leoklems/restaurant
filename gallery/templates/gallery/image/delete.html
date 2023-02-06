@@ -1,0 +1,20 @@
+{% extends 'site_admin/layout.html' %}
+{% block 'page' %} Catalog {%endblock %}
+{% block 'subpage' %} Image Delete {%endblock %}
+{% block 'main' %}
+{% load static %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">You are about to delete an Image</h4>
+            <p>Title: <i>{{gallery.title|title}}</i></p>
+			<p>This action is permanent</p>
+            <form style="display:inline" method="post">
+                {% csrf_token %}
+                <button class="btn btn-success">Proceed</button>
+            </form>
+            <a class="btn btn-danger" href="{% url 'gallery_index' %}"> Cancel</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

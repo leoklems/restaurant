@@ -1,0 +1,120 @@
+{% extends 'site_admin/layout.html' %}
+{% block 'page' %} Dashboard {% endblock %}
+{% block 'subpage' %} Dashboard {% endblock %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+<section class="section">
+  <div class="row">
+
+	<div class="col-lg-12">
+
+	  <div class="card">
+		<div class="card-body">
+		  <h5 class="card-title">RESTAURANT INFORMATION</h5>
+
+		  <!-- Advanced Form Elements -->
+		  <form action="" method="POST" enctype="multipart/form-data">
+		  {% csrf_token %}
+			
+			<div class="row mb-3">
+			
+			  <div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.name}}
+				  <label for="floatingInput">Restaurant Name</label>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.logo}}
+				  <label for="floatingInput">Restaurant Logo</label>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.mobile_1}}
+				  <label for="floatingInput">Mobile Line 1</label>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.mobile_2}}
+				  <label for="floatingInput">Mobile Line 2</label>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.email}}
+				  <label for="floatingInput">Email Address</label>
+				</div>
+			  </div>
+
+			  
+			  <div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.whatsapp}}
+				  <label for="floatingInput">Whatsapp Line</label>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.facebook_link}}
+				  <label for="floatingInput">Facebook Link</label>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.instagram_link}}
+				  <label for="floatingInput">Instagram Link</label>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.twitter_link}}
+				  <label for="floatingInput">Twitter Link</label>
+				</div>
+			  </div>
+
+				<div class="col-sm-6">
+				<div class="form-floating mb-3">
+				  {{form.working_hour}}
+				  <label for="floatingInput">Working Hours</label>
+				</div>
+			  </div>
+
+			  
+			  <div class="col-sm-12">
+				<div class="form-floating mb-3">
+				  {{form.address}}
+				  <label for="floatingInput">Address</label>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-12">
+				<input type="submit" value="save" class="btn btn-outline-primary" style="width:120px;float:right;" />
+			  </div>
+			  
+			
+			  
+			  
+			</div>
+
+		
+
+		  </form><!-- End General Form Elements -->
+
+		</div>
+	  </div>
+
+	</div>
+  </div>
+</section>
+{%endblock %}

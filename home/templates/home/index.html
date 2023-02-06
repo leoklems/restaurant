@@ -1,0 +1,169 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center" style="height:550px">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+      <div class="row">
+        <div class="col-lg-8">
+          <h1>Welcome to <span>{{site_info.name|title}}</span></h1>
+          <h2>Delivering great food for more than 18 years!</h2>
+
+          <div class="btns">
+            <a href="{% url 'menu' %}" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
+            <a class="btn btn-book animated fadeInUp scrollto btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+                Book a Table
+            </a>
+
+          </div>
+        </div>
+        <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
+          <a href="https://www.youtube.com/watch?v=u6BOC7CDUTQ" class="glightbox play-btn"></a>
+        </div>
+
+      </div>
+    </div>
+</section><!-- End Hero -->
+
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row">
+      <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+        <div class="about-img">
+          <img src="{% static 'home/img/lomo_reception.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+        <h3>{% if site_info.name|title %} {{site_info.name|title}} {% endif %} Restaurant and Cafe Abuja</h3>
+        <p class="fst-italic">
+          Welcome to the most hospitable Restaurant and Cafe in Abuja. Experience Quality at its Best.
+        </p>
+        <ul>
+          <li><i class="bi bi-check-circle"></i> Quality Food and Drinks at affordable Price.</li>
+          <li><i class="bi bi-check-circle"></i> Hospitable Staff and Serene Environment.</li>
+          <li><i class="bi bi-check-circle"></i> Free Books and Wifi Services.</li>
+        </ul>
+        <p>
+          Bring your family and friends to our restaurant and enjoy a good quality time. Enjoy Good Food,
+		  Memories, books and hospitality from our professional staff.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About Section -->
+
+
+<!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Menu</h2>
+          <p>Check Our Tasty Menu</p>
+        </div>
+
+        <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+          {% for menu in menu_list %}
+          <div class="col-lg-6 menu-item filter-starters">
+            <img src="/media/{{menu.image}}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">{{menu.name|title}}</a><span><span style=""><del>N</del></span>{{menu.price|floatformat|intcomma}}</span>
+            </div>
+            <div class="menu-ingredients">
+              {{menu.description}}
+            </div>
+			<div style="border:2px solid orange;width:70%;margin-left:20%;border-radius:5px;padding:5px 20px">
+              <a><span style="padding:10px;background:orange;font-size:15px" id="menu_minus" row="{{forloop.counter}}"><b>-</b></span></a> 
+			  <span style="padding:10px 20px;font-size:15px" id="menu_count{{forloop.counter}}">{% if menu.id|stringformat:"i" in request.session.cart %} {% for index, cart_item in request.session.cart.items %} {% if menu.id|stringformat:"i" == index %} {% for item in cart_item %} {% if forloop.counter == 2 %} {{item}} {% endif %} {% endfor %} {% endif %}{% endfor %} {% else %} 1 {% endif %}</span> 
+			  <a><span style="padding:10px;background:orange;font-size:15px" id="menu_plus" row="{{forloop.counter}}"><b>+</b></span></a> 
+			  <button style="margin-left:10px" class="add-cart" pk="{{menu.pk}}" row="{{forloop.counter}}"><span><i class="bi bi-cart"></i><span id="cart_status"> {% if not menu.id|stringformat:"i" in request.session.cart %} Add {% else %} Remove {% endif %}</span></span></button>
+            </div>
+          </div>
+          {% endfor %}
+
+
+
+        </div>
+
+
+        <div class="btns" style="margin-top:25px">
+            <a href="{% url 'menu' %}" class="btn-menu animated fadeInUp">View All Menu</a>
+
+          </div>
+      </div>
+    </section><!-- End Menu Section -->
+
+
+
+    <!-- ======= Events Section ======= -->
+    <section id="events" class="events">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Events</h2>
+          <p>Services we offer in our Restaurant</p>
+        </div>
+
+        <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="row event-item">
+                <div class="col-lg-6">
+                  <img src="{% static 'home/img/dine.jpg' %}" style="width:100%;height:350px" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content">
+                  <h3>Restaurant and Bar</h3>
+                  <div class="price">
+                    <p><span>Quality Time with Loved Ones.</span></p>
+                  </div>
+                  <p class="fst-italic">
+                    Come with family or friend and enjoy our dinner Treat. Special Menu just for you.
+                  </p>
+                  <ul>
+                    <li><i class="bi bi-check-circled"></i> Enjoy Special Menu and Treatments.</li>
+                    <li><i class="bi bi-check-circled"></i> Serene and conducive Environment.</li>
+                  </ul>
+                  <p>
+                    
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="row event-item">
+                <div class="col-lg-6">
+                  <img src="{% static 'home/img/book.jpg' %}" style="width:100%;height:350px" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content">
+                  <h3>Book Cafe</h3>
+                  <div class="price">
+                    <p><span>Interesting Books and Novels</span></p>
+                  </div>
+                  <p class="fst-italic">
+                    Enjoy lots of Books at our cafe, with over a thousand books in our archive.
+                  </p>
+                  <ul>
+                    <li><i class="bi bi-check-circled"></i>Different Categories and types of books.</li>
+                    <li><i class="bi bi-check-circled"></i>Easy to sort book arrangement.</li>
+                 
+                  </ul>
+                  <p>
+                    
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Events Section -->
+{% endblock %}

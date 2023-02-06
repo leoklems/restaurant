@@ -1,0 +1,33 @@
+{% extends 'site_admin/layout.html' %}
+{% block 'page' %} Tag {% endblock %}
+{% block 'subpage' %} Create {% endblock %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="moda" id="verticalycentered" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Menu Category</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-floating">
+                        {{ form.name }}
+                        <label for="floatingName">Category Name <span style="color:red"><b>*</b></span></label>
+                    </div><br />
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{%endblock %}
+

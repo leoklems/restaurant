@@ -1,0 +1,61 @@
+{% extends 'site_admin/layout.html' %}
+{% block 'page' %} Preference {% endblock %}
+{% block 'subpage' %} Index {% endblock %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+<form>
+    <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+            <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                        <h6>Action</h6>
+                    </li>
+
+                    <li class="dropdown-item"><a class="btn btn-primary" style="width:100%" href="{% url 'preference_create' %}">Add Preference</a></li>
+                </ul>
+            </div>
+
+            <div class="card-body">
+                    <h5 class="card-title">Preference List</h5>
+                <table class="table table-borderless datatable">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" style="min-width:120px">Preference</th>
+						<th scope="col" style="min-width:300px">Description</th>
+                        <th scope="col" class="text-center" style="min-width:200px">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if preference_list %}
+                    {% for preference in preference_list %}
+
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ preference.name|title }} </td>
+							<td>{{ preference.description }} </td>
+                            <td class="text-center">
+								<a class="btn btn-primary" href="{% url 'preference_edit' preference.id %}">Edit</a>
+								<a class="btn btn-danger" href="{% url 'preference_delete' preference.id %}">Delete</a>
+							</td>
+                        </tr>
+
+                    {% endfor %}
+                    {% else %}
+                        <tr><td colspan="5"><h3 class="text-center">No Preference Added Yet</h3></td></tr>
+                    {% endif %}
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+{%endblock %}
+

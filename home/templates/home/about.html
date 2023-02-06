@@ -1,0 +1,297 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center" style="height:550px">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+      <div class="row">
+        <div class="col-lg-8">
+          <h1>Welcome to <span>{{site_info.name|title}}</span></h1>
+          <h2>Delivering great food for more than 18 years!</h2>
+
+          <div class="btns">
+            <a href="{% url 'menu' %}" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
+            <a class="btn btn-book animated fadeInUp scrollto btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+                Book a Table
+            </a>
+
+          </div>
+        </div>
+        <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
+          <a href="https://www.youtube.com/watch?v=u6BOC7CDUTQ" class="glightbox play-btn"></a>
+        </div>
+
+      </div>
+    </div>
+</section><!-- End Hero -->
+
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row">
+      <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+        <div class="about-img">
+          <img src="{% static 'home/img/lomo_reception.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+        <h3>{% if site_info.name|title %} {{site_info.name|title}} {% endif %} Restaurant and Cafe Abuja</h3>
+        <p class="fst-italic">
+          Welcome to the most hospitable Restaurant and Cafe in Abuja. Experience Quality at its Best.
+        </p>
+        <ul>
+          <li><i class="bi bi-check-circle"></i> Quality Food and Drinks at affordable Price.</li>
+          <li><i class="bi bi-check-circle"></i> Hospitable Staff and Serene Environment.</li>
+          <li><i class="bi bi-check-circle"></i> Free Books and Wifi Services.</li>
+        </ul>
+        <p>
+          Bring your family and friends to our restaurant and enjoy a good quality time. Enjoy Good Food,
+		  Memories, books and hospitality from our professional staff.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About Section -->
+
+<!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Best Restaurant in Abuja</h2>
+          <p>Why Choose Our Restaurant</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="box" data-aos="zoom-in" data-aos-delay="100">
+              <span style="float:right"><i class="bi bi-menu-button-wide-fill"></i></span>
+              <h4>Classic Menu</h4>
+              <p>We have the best Menu of both Local and International Dishes and Drinks to Satisfy your Desires.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="box" data-aos="zoom-in" data-aos-delay="200">
+              <span style="float:right"><i class="bi bi-house-fill"></i></span>
+              <h4>Serene Environment</h4>
+              <p>Eat and Relax with Comfort at our well Furnished Restaurant. Always Calm and Evironmental Friendly.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="box" data-aos="zoom-in" data-aos-delay="300">
+              <span style="float:right"><i class="bi bi-people-fill"></i></span>
+              <h4>Friendly Staff</h4>
+              <p>You are always in good hands with our Caring Staff. Hospitality is our Priority at our Restaurant.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+
+        <!-- ======= Events Section ======= -->
+    <section id="events" class="events">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Events</h2>
+          <p>Services we offer in our Restaurant</p>
+        </div>
+
+        <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="row event-item">
+                <div class="col-lg-6">
+                  <img src="{% static 'home/img/dine.jpg' %}" style="width:100%;height:350px" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content">
+                  <h3>Restaurant and Bar</h3>
+                  <div class="price">
+                    <p><span>Quality Time with Loved Ones.</span></p>
+                  </div>
+                  <p class="fst-italic">
+                    Come with family or friend and enjoy our dinner Treat. Special Menu just for you.
+                  </p>
+                  <ul>
+                    <li><i class="bi bi-check-circled"></i> Enjoy Special Menu and Treatments.</li>
+                    <li><i class="bi bi-check-circled"></i> Serene and conducive Environment.</li>
+                  </ul>
+                  <p>
+                    
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="row event-item">
+                <div class="col-lg-6">
+                  <img src="{% static 'home/img/book.jpg' %}" style="width:100%;height:350px" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content">
+                  <h3>Book Cafe</h3>
+                  <div class="price">
+                    <p><span>Interesting Books and Novels</span></p>
+                  </div>
+                  <p class="fst-italic">
+                    Enjoy lots of Books at our cafe, with over a thousand books in our archive.
+                  </p>
+                  <ul>
+                    <li><i class="bi bi-check-circled"></i>Different Categories and types of books.</li>
+                    <li><i class="bi bi-check-circled"></i>Easy to sort book arrangement.</li>
+                 
+                  </ul>
+                  <p>
+                    
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Events Section -->
+
+<!-- ======= Chefs Section ======= -->
+    <section id="chefs" class="chefs">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Chefs</h2>
+          <p>Our Proffesional Chefs</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="zoom-in" data-aos-delay="100">
+              <img src="{% static 'home/img/chefs/chefs-1.jpg' %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Walter White</h4>
+                  <span>Master Chef</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="zoom-in" data-aos-delay="200">
+              <img src="{% static 'home/img/chefs/chefs-2.jpg' %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Sarah Jhonson</h4>
+                  <span>Patissier</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="zoom-in" data-aos-delay="300">
+              <img src="{% static 'home/img/chefs/chefs-3.jpg' %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>William Anderson</h4>
+                  <span>Cook</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Chefs Section -->
+
+
+<!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Testimonials</h2>
+          <p>What they're saying about us</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                   Dining at its finest. Beautiful, quiet and serene indoor space and a lovely outdoor space too.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="{% static 'home/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
+                <h3>Jane Nwankpa</h3>
+                <h4>Hair Stylist</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Currently my favorite place to dine and work. The ambience is peaceful and you can focus.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="{% static 'home/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                   It is easy to locate, the menu is affordable and the customer service is amazing.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="{% static 'home/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+                <h3>Francess Akinyosoye</h3>
+                <h4>Teacher</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  If you are in abuja, you have to check out LOMO. It is a cool place to chill.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="{% static 'home/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+{% endblock %}

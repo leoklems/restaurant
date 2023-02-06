@@ -1,0 +1,65 @@
+{% extends 'site_admin/layout.html' %}
+{% block 'page' %} Menu {% endblock %}
+{% block 'subpage' %} Index {% endblock %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+<form>
+    <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+            <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                        <h6>Action</h6>
+                    </li>
+
+                    <li class="dropdown-item"><a class="btn btn-primary" style="width:100%" href="{% url 'book_create' %}">Add Book</a></li>
+                </ul>
+            </div>
+
+            <div class="card-body">
+                    <h5 class="card-title">Book List</h5>
+                <table class="table table-borderless datatable">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" style="min-width:120px">Title</th>
+                        <th scope="col" style="min-width:120px">Category</th>
+                        <th scope="col" style="min-width:120px">Image</th>
+                        <th scope="col" style="min-width:120px">Status</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if book_list %}
+                    {% for book in book_list %}
+
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ book.name|title }} </td>
+                            <td>{{ book.category.name|title }} </td>
+                            <td><img src="/media/{{ book.image}}" style="width:60px;height:60px;border-radius:30px;border:2px solid gold;" /></td>
+                            <td>{{ book.status|title }} </td>
+                            <td class="text-center" style="min-width:120px">
+								<a class="btn btn-primary" href="{% url 'book_edit' book.id %}">Edit</a>
+								<a class="btn btn-danger" href="{% url 'book_delete' book.id %}">Delete</a>
+							</td>
+                        </tr>
+
+                    {% endfor %}
+                    {% else %}
+                        <tr><td colspan="8"><h3 class="text-center">No Book Added Yet</h3></td></tr>
+                    {% endif %}
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+{%endblock %}
+

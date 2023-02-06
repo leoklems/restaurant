@@ -1,0 +1,71 @@
+{% extends 'site_admin/layout.html' %}
+{% block 'page' %} Menu Categories {% endblock %}
+{% block 'subpage' %} Index {% endblock %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+<form>
+    <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+            <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                        <h6>Action</h6>
+                    </li>
+
+                    <li class="dropdown-item"><a class="btn btn-primary" style="width:100%" href="{% url 'reservation_create' %}">Make Reservation</a></li>
+                </ul>
+            </div>
+
+            <div class="card-body">
+                    <h5 class="card-title">Reservation List</h5>
+                <table class="table table-borderless datatable">
+                    <thead>
+                    <tr>
+                        <th scope="col"># ID</th>
+                        <th scope="col" style="min-width:120px">Full Name</th>
+						<th scope="col" style="min-width:120px">Phone Number</th>
+						<th scope="col" style="min-width:120px">Date</th>
+						<th scope="col" style="min-width:120px">Time</th>
+						<th scope="col"  class="text-center">No of Guest</th>
+						<th scope="col"  class="text-center">Table</th>
+						<th scope="col"  class="text-center">Status</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if reservation_list %}
+                    {% for reservation in reservation_list %}
+
+                        <tr>
+                            <th scope="row">{{ reservation.code|upper }}</th>
+                            <td>{{ reservation.full_name|title }} </td>
+							<td>{{ reservation.mobile }} </td>
+							<td>{{ reservation.date|date }} </td>
+							<td>{{ reservation.time|time }} </td>
+							<td class="text-center">{{ reservation.number_of_guest }} </td>
+							<td>{% if reservation.table %}{{ reservation.table|title}} {% else %} ------- {% endif %} </td>
+							<td> </td>
+                            <td class="text-center">
+								<a class="btn btn-primary" href="{% url 'reservation_detail' reservation.id %}">View</a>
+								<a class="btn btn-primary" href="{% url 'reservation_edit' reservation.id %}">Edit</a>
+							</td>
+                        </tr>
+
+                    {% endfor %}
+                    {% else %}
+                        <tr><td colspan="5"><h3 class="text-center">No Reservation Made</h3></td></tr>
+                    {% endif %}
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+{%endblock %}
+

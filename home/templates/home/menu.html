@@ -1,0 +1,41 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+{% load humanize %}
+{% block 'main' %}
+
+<!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu section-bg" style="margin-top:100px">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Menu</h2>
+          <p>Check Our Tasty Menu</p>
+        </div>
+
+        <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+          {% for menu in menu_list %}
+          <div class="col-lg-6 menu-item filter-starters">
+            <img src="/media/{{menu.image}}" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">{{menu.name|title}}</a><span><span style=""><del>N</del></span>{{menu.price|floatformat|intcomma}}</span>
+            </div>
+            <div class="menu-ingredients">
+              {{menu.description}}
+            </div>
+			<div style="border:2px solid orange;width:70%;margin-left:20%;border-radius:5px;padding:5px 20px">
+              <a><span style="padding:10px;background:orange;font-size:15px" id="menu_minus" row="{{forloop.counter}}"><b>-</b></span></a> 
+			  <span style="padding:10px 20px;font-size:15px" id="menu_count{{forloop.counter}}">{% if menu.id|stringformat:"i" in request.session.cart %} {% for index, cart_item in request.session.cart.items %} {% if menu.id|stringformat:"i" == index %} {% for item in cart_item %} {% if forloop.counter == 2 %} {{item}} {% endif %} {% endfor %} {% endif %}{% endfor %} {% else %} 1 {% endif %}</span> 
+			  <a><span style="padding:10px;background:orange;font-size:15px" id="menu_plus" row="{{forloop.counter}}"><b>+</b></span></a> 
+			  <button style="margin-left:10px" class="add-cart" pk="{{menu.pk}}" row="{{forloop.counter}}"><span><i class="bi bi-cart"></i><span id="cart_status"> {% if not menu.id|stringformat:"i" in request.session.cart %} Add {% else %} Remove {% endif %}</span></span></button>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Menu Section -->
+
+
+
+{% endblock %}
